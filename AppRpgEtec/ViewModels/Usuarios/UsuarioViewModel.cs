@@ -80,20 +80,20 @@ namespace AppRpgEtec.ViewModels.Usuarios
                     Preferences.Set("UsuarioPerfil", uAutenticado.Perfil);
                     
                     await Application.Current.MainPage
-                        .DisplayAlert("Informação", mensagem, "Ok");
+                        .DisplayAlertAsync("Informação", mensagem, "Ok");
 
                     Application.Current.MainPage = new AppShell();
 
                 }
                 else
                 {
-                    await Application.Current.MainPage
-                        .DisplayAlert("Informação", "Dados incorretos :(", "Ok");
+                    
+                    await Shell.Current.DisplayAlertAsync("Informação", "Dados incorretos :(", "Ok");
                 }
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Informação",
+                await Shell.Current.DisplayAlertAsync("Informação",
                         ex.Message + " Detalhes: " + ex.InnerException, "Ok");
             }
         }
